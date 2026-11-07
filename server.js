@@ -54,6 +54,27 @@ app.delete('/api/products/:id', (req, res) => {
     res.json({ success: true });
 });
 
+// مسار استقبال وحفظ طلبات الزبائن وتخزينها في orders.json
+app.post('/api/orders', (req, res) => {
+    const newOrder = req.body;
+    console.log('📦 طلب جديد تم استقباله:', JSON.stringify(newOrder, null, 2));
+    
+    const ordersFile = path.join(__dirname, 'orders.json');
+    let orders = [];
+    if (fs.existsSync(ordersFile)) {
+        try {
+            orders = JSON.parse(fs.readFileSync(ordersFile, 'utf8'));
+        } catch (err) {
+            orders = [];
+        }
+    }
+    
+    orders.push({ ...newOrder, date: new Date().toISOString() });
+    fs.writeFileSync(ordersFile, JSON.stringify(orders, null, 2));
+    
+    res.json({ success: true, message: 'تم إتمام الطلب بنجاح!' });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
