@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowUp | السلة</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="cart">
+
+<header class="site-header">
+  <a class="logo" href="index.html">GlowUp<span>♡</span></a>
+  <button class="menu-toggle" aria-label="فتح القائمة">☰</button>
+  <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="products.html">المنتجات</a>
+    <a href="skin.html">نوع بشرتك</a>
+    <a class="active" href="cart.html">السلة <span class="cart-count">0</span></a>
+  </nav>
+</header>
+
+<main class="page-wrap">
+  <div class="page-title">
+    <span class="eyebrow">اختياراتك</span>
+    <h1>سلة المشتريات</h1>
+    <p>راجعي منتجاتك وأدخلي بياناتك لتأكيد الطلب.</p>
+  </div>
+
+  <div class="cart-layout" style="display:grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
+    <div id="cart-content"></div>
+    <div class="checkout-box" style="background:#fff; padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); height:fit-content;">
+      <h3 style="margin-bottom:1rem; color:var(--pink-dark);">معلومات التوصيل</h3>
+      <form id="checkout-form" onsubmit="event.preventDefault(); submitOrder();">
+        <div style="margin-bottom:1rem;">
+          <label style="display:block; margin-bottom:0.3rem;">الاسم الكامل *</label>
+          <input type="text" id="cust-name" required placeholder="اسمك الكريم" style="width:100%; padding:0.7rem; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:1rem;">
+          <label style="display:block; margin-bottom:0.3rem;">رقم الهاتف *</label>
+          <input type="tel" id="cust-phone" required placeholder="09X-XXXXXXX" style="width:100%; padding:0.7rem; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:1rem;">
+          <label style="display:block; margin-bottom:0.3rem;">العنوان والمدينة *</label>
+          <input type="text" id="cust-address" required placeholder="مثال: طرابلس - الصابري" style="width:100%; padding:0.7rem; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="border-top:1px solid #eee; padding-top:1rem; margin-top:1rem; margin-bottom:1rem; display:flex; justify-content:space-between; font-weight:bold; font-size:1.1rem;">
+          <span>الإجمالي النهائي:</span>
+          <span id="cart-grand-total" style="color:var(--pink-dark);">0 د.ل</span>
+        </div>
+        <button type="submit" class="btn" style="width:100%;">تأكيد الطلب ♡</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <a class="logo" href="index.html">GlowUp<span>♡</span></a>
+  <p>جمالك يبدأ بالعناية بنفسك.</p>
+  <small>© 2026 GlowUp</small>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

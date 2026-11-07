@@ -1,0 +1,693 @@
+let PRODUCTS = [
+  {
+    "id": 1,
+    "name": "غسول La Roche-Posay Effaclar Gel",
+    "brand": "La Roche-Posay",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 68,
+    "desc": "ينظف البشرة الدهنية بعمق ويزيل الدهون الزائدة دون تجفيفها.",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 2,
+    "name": "غسول Vichy Normaderm Phytosolution",
+    "brand": "Vichy",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "مختلطة",
+      "معرضة للحبوب"
+    ],
+    "price": 65,
+    "desc": "غني بالحامض الساليسيليك والمعادن لتنقية البشرة وتقليل الشوائب.",
+    "image": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 3,
+    "name": "غسول Avène Cleanance Cleansing Gel",
+    "brand": "Avène",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "حساسة",
+      "معرضة للحبوب"
+    ],
+    "price": 64,
+    "desc": "ينظم إفراز الدهون وينقي البشرة بلمسة ملطفة من المياه الحرارية.",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 4,
+    "name": "غسول Bioderma Sebium Gel Moussant",
+    "brand": "Bioderma",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "مختلطة"
+    ],
+    "price": 58,
+    "desc": "غسول رغوي يمنع انسداد المسام ويحافظ على توازن البشرة.",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 5,
+    "name": "غسول Uriage Hyséac Cleansing Gel",
+    "brand": "Uriage",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "مختلطة"
+    ],
+    "price": 60,
+    "desc": "ينظف الشوائب بعمق ويعيد الانتعاش للبشرة دون تهيج.",
+    "image": "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 6,
+    "name": "غسول SVR Sebiaclear Gel Moussant",
+    "brand": "SVR",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "حساسة",
+      "معرضة للحبوب"
+    ],
+    "price": 62,
+    "desc": "منظف خالٍ من الصابون يفتح المسام ويزيل اللمعان الزائد.",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 7,
+    "name": "غسول Eucerin DermoPurifyer Cleansing Gel",
+    "brand": "Eucerin",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 66,
+    "desc": "يزيل الدهون الزائدة والأوساخ بفاعلية ويعزز نضارة البشرة.",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 8,
+    "name": "غسول ISDIN Acniben Gel Cleanser",
+    "brand": "ISDIN",
+    "category": "غسول",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 70,
+    "desc": "غسول خفيف ينظف ويتحكم في اللمعان للبشرة المعرضة للعيوب.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 9,
+    "name": "غسول رغوي Filorga Foam Cleanser",
+    "brand": "Filorga",
+    "category": "غسول",
+    "skin": [
+      "جميع أنواع البشرة",
+      "جافة",
+      "مختلطة"
+    ],
+    "price": 110,
+    "desc": "رغوة فاخرة تنظف البشرة وتزيل المكياج وترطب بالحامض الهيالورونيك.",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 10,
+    "name": "مرطب La Roche-Posay Effaclar Duo+",
+    "brand": "La Roche-Posay",
+    "category": "مرطب",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 78,
+    "desc": "عناية متكاملة لتقليل البقع والشوائب وترطيب البشرة.",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 11,
+    "name": "مرطب Vichy Mineral 89 Booster",
+    "brand": "Vichy",
+    "category": "مرطب",
+    "skin": [
+      "جميع أنواع البشرة",
+      "جافة",
+      "حساسة"
+    ],
+    "price": 95,
+    "desc": "مرطب بحمض الهيالورونيك والماء الحراري لتقوية حاجز البشرة.",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 12,
+    "name": "كريم Avène Hydrance Rich Cream",
+    "brand": "Avène",
+    "category": "مرطب",
+    "skin": [
+      "جافة",
+      "حساسة"
+    ],
+    "price": 72,
+    "desc": "ترطيب عميق طويل الأمد للبشرة الجافة والحساسة.",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 13,
+    "name": "كريم Bioderma Atoderm Crème Ultra",
+    "brand": "Bioderma",
+    "category": "مرطب",
+    "skin": [
+      "جافة",
+      "حساسة"
+    ],
+    "price": 65,
+    "desc": "كريم مغذي ومقوٍّ لحاجز البشرة ومناسب للاستخدام اليومي.",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 14,
+    "name": "مرطب Eucerin UltraSENSITIVE Soothing Cream",
+    "brand": "Eucerin",
+    "category": "مرطب",
+    "skin": [
+      "حساسة",
+      "جافة"
+    ],
+    "price": 82,
+    "desc": "يهدئ التهيج والانزعاج فوراً بتركيبة فائقة النقاء.",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 15,
+    "name": "مرطب Uriage Xemose Lipid-Replenishing Cream",
+    "brand": "Uriage",
+    "category": "مرطب",
+    "skin": [
+      "جافة",
+      "حساسة"
+    ],
+    "price": 75,
+    "desc": "يرطب البشرة شديدة الجفاف ويزيل شعور الحكة والجفاف.",
+    "image": "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 16,
+    "name": "مرطب SVR Sebiaclear Hydra Moisturizer",
+    "brand": "SVR",
+    "category": "مرطب",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 70,
+    "desc": "مرطب مهدئ للبشرة الدهنية المعالجة بأدوية الحبوب.",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 17,
+    "name": "كريم ISDIN Nutratopic Pro-AMP",
+    "brand": "ISDIN",
+    "category": "مرطب",
+    "skin": [
+      "حساسة",
+      "جافة"
+    ],
+    "price": 88,
+    "desc": "يعزز المناعة الجلدية ويهدئ الاحمرار والجفاف الحاد.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 18,
+    "name": "كريم Filorga Time-Filler 5XP",
+    "brand": "Filorga",
+    "category": "مرطب",
+    "skin": [
+      "جميع أنواع البشرة",
+      "جافة",
+      "مختلطة"
+    ],
+    "price": 185,
+    "desc": "كريم مرطب فاخر ضد علامات التقدم في السن وتجاعيد الوجه.",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 19,
+    "name": "ماء ميسيلار Bioderma Sensibio H2O",
+    "brand": "Bioderma",
+    "category": "تونر",
+    "skin": [
+      "حساسة",
+      "جافة",
+      "مختلطة"
+    ],
+    "price": 58,
+    "desc": "الأشهر عالمياً لتنظيف البشرة وإزالة المكياج بلطف تام.",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 20,
+    "name": "تونر La Roche-Posay Effaclar Clarifying Solution",
+    "brand": "La Roche-Posay",
+    "category": "تونر",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 68,
+    "desc": "ينقبض المسام ويقلل من ظهور الرؤوس السوداء والشوائب.",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 21,
+    "name": "بخاخ المياه الحرارية Avène Thermal Spring Water",
+    "brand": "Avène",
+    "category": "تونر",
+    "skin": [
+      "حساسة",
+      "جافة",
+      "دهنية"
+    ],
+    "price": 42,
+    "desc": "رذاذ مهدئ وملطف فوراً للبشرة الحساسة والمتهيجة.",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 22,
+    "name": "تونر Vichy Pureté Thermale Toner",
+    "brand": "Vichy",
+    "category": "تونر",
+    "skin": [
+      "حساسة",
+      "مختلطة",
+      "جافة"
+    ],
+    "price": 55,
+    "desc": "تونر منعش يزيل بقايا الشوائب ويجهز البشرة للترطيب.",
+    "image": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 23,
+    "name": "ماء حراري Uriage Thermal Water Spray",
+    "brand": "Uriage",
+    "category": "تونر",
+    "skin": [
+      "جميع أنواع البشرة",
+      "حساسة"
+    ],
+    "price": 40,
+    "desc": "مياه متمعدنة طبيعياً لترطيب وتقوية وحماية حاجز البشرة.",
+    "image": "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 24,
+    "name": "ماء ميسيلار SVR Physiopure Micellar Water",
+    "brand": "SVR",
+    "category": "تونر",
+    "skin": [
+      "حساسة"
+    ],
+    "price": 52,
+    "desc": "ينظف الوجه والعيون من المكياج المقاوم للماء بكل لطف.",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 25,
+    "name": "تونر Eucerin DermoPurifyer Toner",
+    "brand": "Eucerin",
+    "category": "تونر",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب"
+    ],
+    "price": 62,
+    "desc": "ينظف المنطقة T والجهات المعرضة للدهون وينقي المسام.",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 26,
+    "name": "ماء ميسيلار ISDIN Micellar Solution 4-in-1",
+    "brand": "ISDIN",
+    "category": "تونر",
+    "skin": [
+      "جميع أنواع البشرة",
+      "حساسة"
+    ],
+    "price": 60,
+    "desc": "تنظيف، إزالة مكياج، توحيد لون، وترطيب في خطوة واحدة.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 27,
+    "name": "تونر Filorga NCEF-Essence Supreme Lotion",
+    "brand": "Filorga",
+    "category": "تونر",
+    "skin": [
+      "جميع أنواع البشرة"
+    ],
+    "price": 140,
+    "desc": "لوشن مائي محضر بمركبات المغذيات المركزة لإعادة نضارة البشرة.",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 28,
+    "name": "واقي شمس La Roche-Posay Anthelios UVMune 400 Fluid",
+    "brand": "La Roche-Posay",
+    "category": "واقي شمس",
+    "skin": [
+      "جميع أنواع البشرة",
+      "حساسة",
+      "دهنية"
+    ],
+    "price": 88,
+    "desc": "حماية قصوى وحائز على جوائز عالمية بقوام غير دهني شفاف.",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 29,
+    "name": "واقي شمس ISDIN Fusion Water SPF50",
+    "brand": "ISDIN",
+    "category": "واقي شمس",
+    "skin": [
+      "دهنية",
+      "مختلطة",
+      "حساسة"
+    ],
+    "price": 92,
+    "desc": "واقي شمس مائي فائق الخفة لا يسبب حرقان العينين ومثالي يومياً.",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 30,
+    "name": "واقي شمس Eucerin Oil Control Dry Touch SPF50+",
+    "brand": "Eucerin",
+    "category": "واقي شمس",
+    "skin": [
+      "دهنية",
+      "معرضة للحبوب",
+      "مختلطة"
+    ],
+    "price": 85,
+    "desc": "تحكم باللمعان والدهون لمدة 8 ساعات بمظهر مطفي متألق.",
+    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 31,
+    "name": "واقي شمس Vichy Capital Soleil Dry Touch SPF50",
+    "brand": "Vichy",
+    "category": "واقي شمس",
+    "skin": [
+      "دهنية",
+      "مختلطة"
+    ],
+    "price": 84,
+    "desc": "لمسة جافة ومقاومة للماء والتعرق تناسب الأجواء الحارة.",
+    "image": "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 32,
+    "name": "واقي شمس Avène Fluid SPF50+",
+    "brand": "Avène",
+    "category": "واقي شمس",
+    "skin": [
+      "حساسة",
+      "مختلطة"
+    ],
+    "price": 82,
+    "desc": "حماية واسعة النطاق للبشرة الحساسة غني بالمياه الحرارية.",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 33,
+    "name": "واقي شمس Bioderma Photoderm Aquafluide SPF50+",
+    "brand": "Bioderma",
+    "category": "واقي شمس",
+    "skin": [
+      "جميع أنواع البشرة",
+      "حساسة"
+    ],
+    "price": 79,
+    "desc": "تركيبة مائية خفيفة ترطب وتحمي الخلية الجلدية من الأكسدة.",
+    "image": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 34,
+    "name": "واقي شمس Uriage Bariesun Fluid SPF50+",
+    "brand": "Uriage",
+    "category": "واقي شمس",
+    "skin": [
+      "حساسة",
+      "جافة",
+      "مختلطة"
+    ],
+    "price": 76,
+    "desc": "سائل خفيف غير لزج يحمي من الأشعة فوق البنفسجية والتلوث.",
+    "image": "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 35,
+    "name": "واقي شمس SVR Sun Secure Blur SPF50",
+    "brand": "SVR",
+    "category": "واقي شمس",
+    "skin": [
+      "جميع أنواع البشرة"
+    ],
+    "price": 86,
+    "desc": "كريمي ذو ملمس مخملي يخفي العيوب ويعطي مظهراً موحداً للبشرة.",
+    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=85"
+  },
+  {
+    "id": 36,
+    "name": "واقي شمس Filorga UV-Bronze Face SPF50+",
+    "brand": "Filorga",
+    "category": "واقي شمس",
+    "skin": [
+      "جميع أنواع البشرة"
+    ],
+    "price": 145,
+    "desc": "عناية فائقة مضادة للتجاعيد والبقع الداكنة مع حماية قوية جداً.",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=85"
+  }
+];
+
+const routines = {
+ 'دهنية':[['غسول','اختاري غسولاً لطيفاً يساعد على إزالة الدهون الزائدة.'],['سيروم','يمكن اختيار سيروم مناسب وخفيف حسب احتياج البشرة.'],['مرطب','استخدمي مرطباً خفيفاً لا يترك إحساساً دهنياً.'],['واقي شمس','ضعي واقي شمس واسع الطيف صباحاً.']],
+ 'جافة':[['غسول','استخدمي غسولاً كريميّاً لطيفاً لا يجرّد البشرة من زيوتها.'],['سيروم','يمكن إضافة سيروم مرطب.'],['مرطب','اختاري كريماً غنياً للحفاظ على الترطيب.'],['واقي شمس','اختمي روتين الصباح بواقي الشمس.']],
+ 'مختلطة':[['غسول','نظفي البشرة بغسول لطيف.'],['سيروم','اختاري سيروماً يناسب احتياجاتك.'],['مرطب','استخدمي مرطباً خفيفاً ومتوازناً.'],['واقي شمس','استخدمي واقي شمس كل صباح.']],
+ 'حساسة':[['غسول','اختاري غسولاً بسيطاً خالياً من العطر قدر الإمكان.'],['سيروم','تجنبي كثرة المواد الفعالة وابدئي تدريجياً.'],['مرطب','استخدمي مرطباً مهدئاً ولطيفاً.'],['واقي شمس','اختاري واقياً مناسباً للبشرة الحساسة.']],
+ 'معرضة للحبوب':[['غسول','استخدمي غسولاً لطيفاً دون فرك.'],['سيروم','اختاري مكونات مناسبة وابدئي بالتدريج.'],['مرطب','لا تهملي الترطيب حتى لو كانت البشرة دهنية.'],['واقي شمس','استخدمي واقي شمس لا يسد المسام إن أمكن.']]
+};
+
+const $ = s => document.querySelector(s);
+
+function getCart() {
+    try { return JSON.parse(localStorage.getItem('glowup_cart') || '[]'); } catch { return []; }
+}
+
+function saveCart(cart) {
+    localStorage.setItem('glowup_cart', JSON.stringify(cart));
+    updateCount();
+}
+
+function updateCount() {
+    const n = getCart().reduce((s, x) => s + x.qty, 0);
+    document.querySelectorAll('.cart-count').forEach(e => e.textContent = n);
+}
+
+function productCard(p) {
+    return `<article class="product-card">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <div class="product-info">
+            <span class="product-brand">${p.brand} · ${p.category}</span>
+            <h3>${p.name}</h3>
+            <p>${p.desc}</p>
+            <div class="product-bottom">
+                <b>${p.price} د.ل</b>
+                <button class="add-btn" data-add="${p.id}">أضيفي للسلة +</button>
+            </div>
+        </div>
+    </article>`;
+}
+
+function addProductToCart(id) {
+    const p = PRODUCTS.find(x => x.id === Number(id));
+    if (!p) return;
+    const c = getCart();
+    const found = c.find(x => x.id === p.id);
+    found ? found.qty++ : c.push({ id: p.id, qty: 1 });
+    saveCart(c);
+    toast('انضاف المنتج للسلة ♡');
+    if (document.body.dataset.page === 'cart') {
+        renderCart();
+    }
+}
+
+function changeQty(id, delta) {
+    let c = getCart();
+    const item = c.find(x => x.id === Number(id));
+    if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+            c = c.filter(x => x.id !== Number(id));
+        }
+        saveCart(c);
+        renderCart();
+    }
+}
+
+function removeCartItem(id) {
+    let c = getCart();
+    c = c.filter(x => x.id !== Number(id));
+    saveCart(c);
+    renderCart();
+}
+
+function toast(msg) {
+    let t = $('#toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = 'toast';
+        t.className = 'toast';
+        document.body.append(t);
+    }
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function renderFeatured() {
+    const el = $('#featured-products');
+    if (el) el.innerHTML = PRODUCTS.slice(0, 8).map(productCard).join('');
+}
+
+function renderProducts() {
+    const el = $('#all-products');
+    if (!el) return;
+    const search = ($('#search-input')?.value || '').trim().toLowerCase();
+    const brand = $('#brand-filter')?.value || '';
+    const skin = $('#skin-filter')?.value || '';
+    const cat = $('#category-filter')?.value || '';
+    
+    const list = PRODUCTS.filter(p => 
+        (p.name.toLowerCase().includes(search) || p.brand.toLowerCase().includes(search)) &&
+        (!brand || p.brand === brand) &&
+        (!skin || (p.skin && p.skin.includes(skin))) &&
+        (!cat || p.category === cat)
+    );
+    
+    el.innerHTML = list.length ? list.map(productCard).join('') : '<p class="empty-state">ما لقيناش منتجات مطابقة. جرّبي تغيير البحث.</p>';
+}
+
+function renderCart() {
+    const el = $('#cart-content');
+    const totalEl = $('#cart-grand-total');
+    if (!el) return;
+    
+    const cart = getCart();
+    if (cart.length === 0) {
+        el.innerHTML = '<p class="empty-state">سلتك فارغة حالياً. تسوّقي واختاري منتجاتك المفضلّة!</p>';
+        if (totalEl) totalEl.textContent = '0 د.ل';
+        return;
+    }
+
+    let total = 0;
+    const html = cart.map(item => {
+        const p = PRODUCTS.find(x => x.id === item.id);
+        if (!p) return '';
+        const subtotal = p.price * item.qty;
+        total += subtotal;
+        return `<div class="cart-item" style="display:flex; align-items:center; justify-content:space-between; background:#fff; padding:1rem; margin-bottom:1rem; border-radius:8px; box-shadow:var(--shadow);">
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <img src="${p.image}" alt="${p.name}" style="width:65px; height:65px; object-fit:cover; border-radius:6px;">
+                <div>
+                    <h4 style="margin:0 0 0.3rem 0;">${p.name}</h4>
+                    <span style="color:var(--muted);">${p.price} د.ل</span>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <div style="display:flex; align-items:center; gap:0.5px;">
+                    <button type="button" onclick="changeQty(${p.id}, -1)" style="padding:0.2rem 0.6rem; background:#eee; border:none; cursor:pointer; border-radius:4px;">-</button>
+                    <span style="padding:0 0.5rem; font-weight:bold;">${item.qty}</span>
+                    <button type="button" onclick="changeQty(${p.id}, 1)" style="padding:0.2rem 0.6rem; background:#eee; border:none; cursor:pointer; border-radius:4px;">+</button>
+                </div>
+                <b style="color:var(--pink-dark); min-width:60px; text-align:left;">${subtotal} د.ل</b>
+                <button type="button" onclick="removeCartItem(${p.id})" style="background:#ff4d4d; color:#fff; border:none; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer;">حذف</button>
+            </div>
+        </div>`;
+    }).join('');
+
+    el.innerHTML = html;
+    if (totalEl) totalEl.textContent = total + ' د.ل';
+}
+
+function submitOrder() {
+    const name = $('#cust-name')?.value;
+    const phone = $('#cust-phone')?.value;
+    const address = $('#cust-address')?.value;
+    if (!name || !phone || !address) {
+        alert('الرجاء إدخال كافة بيانات الشاري للتوصيل.');
+        return;
+    }
+    alert('شكراً لكِ ' + name + '! تم استلام طلبك بنجاح وسيتم التواصل معكِ قريباً للتوصيل ♡');
+    localStorage.removeItem('glowup_cart');
+    saveCart([]);
+    renderCart();
+    $('#checkout-form')?.reset();
+}
+
+function initFilters() {
+    const b = $('#brand-filter');
+    if (b && b.options.length <= 1) {
+        const uniqueBrands = [...new Set(PRODUCTS.map(p => p.brand))].sort();
+        uniqueBrands.forEach(x => {
+            const opt = document.createElement('option');
+            opt.value = x;
+            opt.textContent = x;
+            b.appendChild(opt);
+        });
+    }
+    ['search-input', 'brand-filter', 'skin-filter', 'category-filter'].forEach(id => {
+        $('#' + id)?.addEventListener(id === 'search-input' ? 'input' : 'change', renderProducts);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCount();
+    renderFeatured();
+    renderProducts();
+    initFilters();
+    if (document.body.dataset.page === 'cart') {
+        renderCart();
+    }
+
+    document.addEventListener('click', e => {
+        const btn = e.target.closest('[data-add]');
+        if (btn) {
+            addProductToCart(btn.dataset.add);
+        }
+    });
+
+    const skinSelect = $('#skin-type');
+    const showBtn = $('#show-routine');
+    if (showBtn && skinSelect) {
+        showBtn.addEventListener('click', () => {
+            const type = skinSelect.value;
+            const resEl = $('#routine-result');
+            if (resEl && routines[type]) {
+                const steps = routines[type];
+                resEl.innerHTML = `<h2>روتين مقترح للبشرة ${type}</h2>
+                <div class="routine-steps">
+                    ${steps.map((s, i) => `<article class="routine-step"><span>الخطوة ${i+1}</span><h4>${s[0]}</h4><p>${s[1]}</p></article>`).join('')}
+                </div>`;
+            }
+        });
+    }
+});
