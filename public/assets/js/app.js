@@ -628,7 +628,7 @@ function renderCart() {
     if (totalEl) totalEl.textContent = total + ' د.ل';
 }
 
-function submitOrder() {
+async function submitOrder() {
     const name = $('#cust-name')?.value;
     const phone = $('#cust-phone')?.value;
     const address = $('#cust-address')?.value;
@@ -636,11 +636,57 @@ function submitOrder() {
         alert('الرجاء إدخال كافة بيانات الشاري للتوصيل.');
         return;
     }
-    alert('شكراً لكِ ' + name + '! تم استلام طلبك بنجاح وسيتم التواصل معكِ قريباً للتوصيل ♡');
-    localStorage.removeItem('glowup_cart');
-    saveCart([]);
-    renderCart();
-    $('#checkout-form')?.reset();
+
+    const cart = getCart();
+    if (cart.length === 0) {
+        alert('سلتك فارغة!');
+        return;
+    }
+
+    let grandTotal = 0;
+    const orderItems = cart.map(item => {
+        const p = PRODUCTS.find(x => x.id === item.id);
+        const price = p ? p.price : 0;
+        grandTotal += price * item.qty;
+        return {
+            productId: item.id,
+            name: p ? p.name : 'منتج',
+            price: price,
+            qty: item.qty
+        };
+    });
+
+    const orderData = {
+        name,
+        phone,
+        address,
+        items: orderItems,
+        total: grandTotal
+    };
+
+    try {
+        const response = await fetch('/api/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert('شكراً لكِ ' + name + '! تم استلام طلبك بنجاح وسيتم التواصل معكِ قريباً للتوصيل ♡');
+            localStorage.removeItem('glowup_cart');
+            saveCart([]);
+            renderCart();
+            $('#checkout-form')?.reset();
+        } else {
+            alert('حدث خطأ أثناء إرسال الطلب، جربي مرة أخرى.');
+        }
+    } catch (err) {
+        console.error('Error submitting order:', err);
+        alert('حدث خطأ في الاتصال بالخادم.');
+    }
 }
 
 function initFilters() {
